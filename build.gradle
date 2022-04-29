@@ -22,7 +22,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
 }
 
-group = 'org.example'
+group = 'com.github.ikhideifidon'
 version = '1.0-SNAPSHOT'
 description = 'JFreeCharts'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
