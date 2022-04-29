@@ -21,7 +21,7 @@ public class PieChartGenerationBasedOnFile extends ApplicationFrame {
     }
 
     private PieDataset<String> createDataset() throws IOException {
-        DefaultPieDataset<String> dataset = new DefaultPieDataset<>();
+        final DefaultPieDataset<String> dataset = new DefaultPieDataset<>();
 
         InputStream in = new FileInputStream(file);
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));

@@ -6,12 +6,12 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[ ] args) throws IOException {
         pieChartGenerationBasedOnFile();
-//        barChart();
+        barChart();
         check();
     }
 
     public static void pieChartGenerationBasedOnFile() throws IOException {
-        PieChartGenerationBasedOnFile demo = new PieChartGenerationBasedOnFile("Mobile Sales", new File("src/main/java/stevens"));
+        PieChartGenerationBasedOnFile demo = new PieChartGenerationBasedOnFile("Mobile Sales", new File("src/main/resources/stevens"));
         demo.setSize(560 , 367);
         RefineryUtilities.centerFrameOnScreen(demo);
         demo.setVisible(true);
@@ -25,7 +25,7 @@ public class Main {
     }
 
     public static void check() throws IOException {
-        InputStream in = new FileInputStream(new File("src/main/java/stevens"));
+        InputStream in = new FileInputStream(new File("src/main/resources/stevens"));
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         StringBuilder stringBuilder = new StringBuilder();
         String line;
