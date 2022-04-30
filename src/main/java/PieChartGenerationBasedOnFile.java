@@ -5,7 +5,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.ui.ApplicationFrame;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,28 +22,28 @@ public class PieChartGenerationBasedOnFile extends ApplicationFrame {
 
     private PieDataset<String> createDataset() throws IOException {
         final DefaultPieDataset<String> dataset = new DefaultPieDataset<>();
-
-        InputStream in = new FileInputStream(file);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         String line;
 
+        try ( InputStream in = new FileInputStream(file);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in))
+        ) {
+            // Text-parsing
+            while ((line = reader.readLine()) != null) {
+                String[] string = line.split(",+");
+                // Format string at index 0;
+                // Replace all non-word characters except white-space between words only.
+                String stringValue, stringDigit;
+                stringValue = string[0].replaceAll("[^\\w\\s]+", "").trim();
 
-        // Text Formatting
-        while ((line = reader.readLine()) != null) {
-            String[] string = line.split(",+");
-            // Format string at index 0;
-            // Replace all non-word characters except white-space between words only.
-            String stringValue, stringDigit;
-            stringValue = string[0].replaceAll("[^\\w\\s]+", "").trim();
+                // Format string at index 1
+                stringDigit = findDigitsInStrings(string[1]);
+                Double value;
+                if (stringDigit != null) value = Double.valueOf(stringDigit); else continue;
+                dataset.setValue(stringValue, value);
+            }
+            return dataset;
 
-            // Format string at index 1
-            stringDigit = findDigitsInStrings(string[1]);
-            Double value;
-            if (stringDigit != null) value = Double.valueOf(stringDigit); else continue;
-            dataset.setValue(stringValue, value);
-        }
-        return dataset;
-
+    }
     }
 
     private static JFreeChart createChart(PieDataset<String> dataset) {

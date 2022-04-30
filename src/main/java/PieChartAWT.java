@@ -5,7 +5,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.ui.ApplicationFrame;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 @SuppressWarnings("jol")
 public class PieChartAWT extends ApplicationFrame {

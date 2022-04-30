@@ -25,7 +25,7 @@ public class Main {
     }
 
     public static void check() throws IOException {
-        InputStream in = new FileInputStream(new File("src/main/resources/stevens"));
+        InputStream in = new FileInputStream("src/main/resources/stevens");
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         StringBuilder stringBuilder = new StringBuilder();
         String line;

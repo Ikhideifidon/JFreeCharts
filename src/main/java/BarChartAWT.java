@@ -6,7 +6,7 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 
-import java.awt.*;
+import java.awt.Dimension;
 import java.util.Arrays;
 
 @SuppressWarnings("jol")
