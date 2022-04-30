@@ -25,15 +25,16 @@ public class Main {
     }
 
     public static void check() throws IOException {
-        InputStream in = new FileInputStream("src/main/resources/stevens");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         StringBuilder stringBuilder = new StringBuilder();
         String line;
-
-        while ((line = reader.readLine()) != null) {
-            stringBuilder.append(line);
-            if (reader.ready())
-                stringBuilder.append("#@*6");
+        try (InputStream in = new FileInputStream("src/main/resources/stevens");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in))
+        ) {
+            while ((line = reader.readLine()) != null) {
+                stringBuilder.append(line);
+                if (reader.ready())
+                    stringBuilder.append("#@*6");
+            }
         }
         String[] returnedString = stringBuilder.toString().split("#@[*]6");
         System.out.println(Arrays.toString(returnedString));
